@@ -20,4 +20,5 @@ export default function Layout({children}) {
       <div className="flex-grow bg-white mt-1 mb-1 mr-1 rounded-lg p-4">{children}</div>
     </div>
   )
+  
 }
