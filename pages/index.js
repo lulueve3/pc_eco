@@ -4,12 +4,12 @@ import Layout from "@/Components/Layout";
 import { useSession } from "next-auth/react";
 
 
-export default function Home() {
+export default function Home({products}) {
   const {data: session} = useSession();
   return (
     <div>
       <Header/>
-      <Featured/>
+      <Featured product = {product}/>
     </div>
   )
 }

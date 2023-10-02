@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Center from "./Center";
 
 const StyledHeader = styled.header`
-    background-color: #000;
+    background-color: #001a00;
 `;
 
 const Logo = styled(Link)`
