@@ -27,7 +27,17 @@ const StyledButton = styled.button`
         height: 30px;
         margin-right: 5px;
     }
-    `}
+   `}
+
+   ${props => props.primary && props.outline && css`
+        background-color: #1a75ff;
+        color: #fff;
+        border: 1px solid #1a75ff;
+        svg{
+        height: 30px;
+        margin-right: 5px;
+    }
+   `}
 
     ${props => props.size === 'l' && css `
         font-size:1.2rem;
