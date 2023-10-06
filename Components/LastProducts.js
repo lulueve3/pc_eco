@@ -9,10 +9,14 @@ const ProductsGrid = styled.div`
     padding-top: 20px;
 `;
 
+const Title = styled.h2`
+    font-size: 2rem;
+`;
 
 export default function LastProducts({ lastProducts }) {
     return (
         <Center>
+            <Title>New Arrivals</Title>
             <ProductsGrid>
                 {lastProducts.length > 0 && lastProducts.map(product => (
                     // eslint-disable-next-line react/jsx-key

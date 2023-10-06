@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Button from "./Button";
 import CurrencyFormat from "./CurencyFormat";
+import Link from "next/link";
 
 const ProductWrapper = styled.div`
 
@@ -14,7 +15,7 @@ const AddToCart = styled.div`
     right: 0;
 `;
 
-const Box = styled.div`
+const Box = styled(Link)`
     background-color: #fff;
     padding: 20px;
     height: 180px;
@@ -34,7 +35,7 @@ const Box = styled.div`
     }
 `;
 
-const Titile = styled.div`
+const Titile = styled(Link)`
     font-weight: normal;
     font-size:0.9rem;
     margin: 0;
@@ -62,10 +63,11 @@ const Price = styled.div`
 
 
 
-export default function ProductBox({ titile, desc, price, images }) {
+export default function ProductBox({ id ,titile, desc, price, images }) {
+    const url = '/product/'+id;
     return (
         <ProductWrapper>
-            <Box>
+            <Box href={url}>
                 <AddToCart>
                     <Button primary outline>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -80,7 +82,7 @@ export default function ProductBox({ titile, desc, price, images }) {
                 </div>
             </Box>
             <ProductInfoBox>
-                <Titile>{titile}</Titile>
+                <Titile href={url}>{titile}</Titile>
                 <PriceRow>
                     <Price>
 
