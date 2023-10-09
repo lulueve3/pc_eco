@@ -37,7 +37,7 @@ export default function Header(){
     const router = useRouter();
 
     const handleRedirect = ()=>{
-        router.push('../user/LoginRegister');
+        router.push('../LoginRegister');
     };
 
     return(
@@ -51,7 +51,7 @@ export default function Header(){
                         <NavLink href={'/user/products'}>All Products</NavLink>
                         <NavLink href={'/categories'}>Categories</NavLink>
                         <NavLink href={'/account'}>Account</NavLink>
-                        <NavLink href={'/cart'}>Cart ({cartProducts.length})</NavLink>
+                        <NavLink href={'/Cart'}>Cart ({cartProducts?.length || 0})</NavLink>
                         <button className="bg-cyan-950 text-green-400 rounded-lg p-2" onClick={handleRedirect}>Login</button>
                     </StyledNav> 
                 </Wrapper>

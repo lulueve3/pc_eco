@@ -42,7 +42,7 @@ const Column = styled.div`
 export default function Featured({product}) {
     const {addProduct} = useContext(CartContext);
     function addFeaturedProductToCart(){
-        addProduct(prev => [...prev,product.id])
+        addProduct(product.id)
     }
 
     return (
@@ -51,7 +51,7 @@ export default function Featured({product}) {
                 <ColumnWrapper>
                     <Column>
                         <div>
-                            <Title> Pro Anywhere</Title>
+                            <Title>{product.titile}</Title>
                             <Desc>In this tutorial, You will learn how to build a fullstack ecommerce app using next.js and mongo database. It will be 2 projects with a lot of cool functionality.</Desc>
                             <ButtonWrapper>
                                 <Button white outline size='l'>Read more</Button>
