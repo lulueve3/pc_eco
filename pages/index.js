@@ -18,7 +18,7 @@ export default function Home({products}) {
   return (
     <div>
       <Header/>
-      <Featured />
+      <Featured product={lastProducts[0]}/>
       <LastProducts lastProducts ={lastProducts} />
     </div>
   )

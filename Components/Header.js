@@ -2,6 +2,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import Center from "./Center";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
 
 const StyledHeader = styled.header`
     background-color: #001a00;
@@ -31,6 +33,7 @@ const NavLink = styled(Link)`
 `;
 
 export default function Header(){
+    const {cartProducts} = useContext(CartContext);
     const router = useRouter();
 
     const handleRedirect = ()=>{
@@ -38,6 +41,7 @@ export default function Header(){
     };
 
     return(
+
         <StyledHeader>
             <Center>
                 <Wrapper>
@@ -47,7 +51,7 @@ export default function Header(){
                         <NavLink href={'/user/products'}>All Products</NavLink>
                         <NavLink href={'/categories'}>Categories</NavLink>
                         <NavLink href={'/account'}>Account</NavLink>
-                        <NavLink href={'/cart'}>Cart (0)</NavLink>
+                        <NavLink href={'/cart'}>Cart ({cartProducts.length})</NavLink>
                         <button className="bg-cyan-950 text-green-400 rounded-lg p-2" onClick={handleRedirect}>Login</button>
                     </StyledNav> 
                 </Wrapper>

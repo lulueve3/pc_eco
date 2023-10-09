@@ -2,6 +2,10 @@ import styled from "styled-components"
 import Button from "./Button";
 import CurrencyFormat from "./CurencyFormat";
 import Link from "next/link";
+import { useContext } from "react";
+import { CartContext } from "./CartContext";
+import { useRouter } from "next/router";
+
 
 const ProductWrapper = styled.div`
 
@@ -15,7 +19,7 @@ const AddToCart = styled.div`
     right: 0;
 `;
 
-const Box = styled(Link)`
+const Box = styled.div`
     background-color: #fff;
     padding: 20px;
     height: 180px;
@@ -44,7 +48,9 @@ const Titile = styled(Link)`
 
 const ProductInfoBox = styled.div`
     margin-top: 10px;
-    
+    &:hover{
+        cursor: pointer;
+    }
 `;
 
 const PriceRow = styled.div`
@@ -64,12 +70,23 @@ const Price = styled.div`
 
 
 export default function ProductBox({ id ,titile, desc, price, images }) {
-    const url = '/product/'+id;
+    const url = '../user/Product?id='+id;
+    const router = useRouter();
+    const handleRedirect = ()=>{
+        router.push(url);
+    };
+
+    const {addProduct} = useContext(CartContext);
+    function addFeaturedProductToCart(){
+        addProduct(prev => [...prev,product.id])
+    }
+
+
     return (
         <ProductWrapper>
-            <Box href={url}>
+            <Box >
                 <AddToCart>
-                    <Button primary outline>
+                    <Button onClick ={addProduct} primary outline>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                         </svg>
@@ -78,10 +95,10 @@ export default function ProductBox({ id ,titile, desc, price, images }) {
                 </AddToCart>
 
                 <div>
-                    <img src={images} alt="" />
+                    <img src={images} alt="" onClick={handleRedirect} />
                 </div>
             </Box>
-            <ProductInfoBox>
+            <ProductInfoBox onClick={handleRedirect}>
                 <Titile href={url}>{titile}</Titile>
                 <PriceRow>
                     <Price>
