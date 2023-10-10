@@ -8,6 +8,13 @@ const StyledButton = styled.button`
     display: inline-flex;
     align-items: center;
 
+    ${props => props.primary && props.block && css`
+        display: block;
+        width: 100%;
+        padding: 2px;
+        margin-top: 20px;
+    `}
+
     ${props => props.white && !props.outline && css`
         background-color: #fff;
         color: #000;
